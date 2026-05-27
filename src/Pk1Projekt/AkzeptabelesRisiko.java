@@ -1,6 +1,10 @@
 package Pk1Projekt;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 public class AkzeptabelesRisiko extends Risiko {
 
@@ -16,11 +20,18 @@ public class AkzeptabelesRisiko extends Risiko {
 
 
     @Override
-    public void druckDaten() {
-        int monate = getErstellungsdatum().getMonthValue();
-        int jahr = getErstellungsdatum().getYear();
-        JOptionPane.showMessageDialog(null , "Id " + getId() + " Akzeptables Risiko " + getbezeichnung() + " aus " + monate + "/" + jahr + ";\n" +
-                "Risikowert " + berechneRisikowert() + "; Rückstellung " + ermittleRueckstellung());
+    public void druckDaten(OutputStream stream) {
+
+        PrintStream ps = new PrintStream(stream);
+            int monate = getErstellungsdatum().getMonthValue();
+            int jahr = getErstellungsdatum().getYear();
+            ps.printf("Id %d Akzeptables Risiko %s aus %d/%d;%nRisikowert %.2f; Rückstellung %.2f%n",
+                    getId(),
+                    getbezeichnung(),
+                    monate,
+                    jahr,
+                    berechneRisikowert(),
+                    ermittleRueckstellung());
 
     }
 

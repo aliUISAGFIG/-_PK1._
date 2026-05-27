@@ -26,7 +26,7 @@ public class Risikoverwaltung {
             Iterator<Risiko> risikoIterator = risiken.iterator();
             while (risikoIterator.hasNext()) {
                 Risiko r = risikoIterator.next();
-                r.druckDaten();
+                r.druckDaten(System.out);
             }
         }
     }
@@ -42,8 +42,9 @@ public class Risikoverwaltung {
             if( risiken.get(i).ermittleRueckstellung() > x.ermittleRueckstellung() ){
                 x = risiken.get(i);
             }
-             x.druckDaten();
+
         }
+            x.druckDaten(System.out);
         }
 
         return x;

@@ -1,6 +1,8 @@
 package Pk1Projekt;
 
 import javax.swing.*;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Objects;
 
 public class ExtremsRisko extends InakzeptabelesRisiko {
@@ -23,13 +25,17 @@ public class ExtremsRisko extends InakzeptabelesRisiko {
     }
 
     @Override
-    public void druckDaten() {
+    public void druckDaten(OutputStream stream) {
+        PrintStream str = new PrintStream(stream);
         int monate = getErstellungsdatum().getMonthValue();
         int jahr = getErstellungsdatum().getYear();
-        JOptionPane.showMessageDialog(null , "Id " + getId() + " Extremes Risiko " + getbezeichnung() + " aus " + monate + "/" + jahr + ";\n" +
-                "Versicherungbeitrag " + getVersicherungsbeitrag() + "Maßnahme " + getMassnahme());
-
-
+        str.printf("Id %d Extremes Risiko %s aus %d/%d;%nVersicherungsbeitrag %.2f Maßnahme %s%n",
+                getId(),
+                getbezeichnung(),
+                monate,
+                jahr,
+                getVersicherungsbeitrag(),
+                getMassnahme());
     }
 
     @Override

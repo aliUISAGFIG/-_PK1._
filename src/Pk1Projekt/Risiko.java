@@ -1,5 +1,6 @@
 package Pk1Projekt;
 
+import java.io.OutputStream;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -32,7 +33,7 @@ public abstract class Risiko implements Comparable<Risiko> {
 
     public float berechneRisikowert() {
 
-        return this.eintrittswahrcheiligkeit * this.kosten_im_schadenfall;
+        return this.getEintrittswahrcheiligkeit() * this.getKosten_im_schadenfall();
 
     }
 
@@ -46,7 +47,7 @@ public abstract class Risiko implements Comparable<Risiko> {
 
     public abstract float ermittleRueckstellung();
 
-    public abstract void druckDaten();
+    public abstract void druckDaten(OutputStream stream);
 
     public int getId() {
         return this.id;
