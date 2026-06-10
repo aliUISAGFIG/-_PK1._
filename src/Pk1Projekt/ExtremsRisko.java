@@ -6,9 +6,8 @@ import java.io.PrintStream;
 import java.util.Objects;
 
 public class ExtremsRisko extends InakzeptabelesRisiko {
-
+    private static final long serialVersionUID= 100L;
     private float versicherungsbeitrag;
-
     public ExtremsRisko(String bezeichung, float eintrittwahrscheilicjkeit, float kosten_im_schadenfall, String massnahme, float versicherungsbeitrag) {
         super(bezeichung, eintrittwahrscheilicjkeit, kosten_im_schadenfall, massnahme);
         this.versicherungsbeitrag = versicherungsbeitrag;

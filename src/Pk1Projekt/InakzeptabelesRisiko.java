@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class InakzeptabelesRisiko extends Risiko {
     private String massnahme;
-
+    private static final long serialVersionUID= 100L;
     public InakzeptabelesRisiko(String bezeichnung, float eintrittwahrscheilicjkeit, float kosten_im_schadenfall, String massnahme) {
         super(bezeichnung, eintrittwahrscheilicjkeit, kosten_im_schadenfall);
         this.massnahme = massnahme;

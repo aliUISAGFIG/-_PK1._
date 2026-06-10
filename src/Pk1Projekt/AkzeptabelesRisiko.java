@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 
 public class AkzeptabelesRisiko extends Risiko {
-
+    private static final long serialVersionUID= 100L;
     public AkzeptabelesRisiko(String bezeichnung, float eintrittwahrscheilicjkeit, float kosten_im_schadenfall) {
         super(bezeichnung, eintrittwahrscheilicjkeit, kosten_im_schadenfall);
     }

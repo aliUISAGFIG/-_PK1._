@@ -1,15 +1,17 @@
 package Pk1Projekt;
 
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 
-public abstract class Risiko implements Comparable<Risiko> {
+public abstract class Risiko implements Comparable<Risiko> , Serializable {
 
     private final int id;
     public static final float LIMIT = 10000.0f;
     public static final float KOSTENLIMIT = 1000000.0f;
+    private static final long serialVersionUID= 100L;
     private String bezeichnung;
     private static int counter = 0;
     private float eintrittswahrcheiligkeit;

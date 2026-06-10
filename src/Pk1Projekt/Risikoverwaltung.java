@@ -1,5 +1,6 @@
 package Pk1Projekt;
 
+import java.io.*;
 import java.util.*;
 
 public class Risikoverwaltung {
@@ -49,6 +50,40 @@ public class Risikoverwaltung {
 
         return x;
     }
+    public void List_in_datei_Speichern(File file) throws IOException {
+                try (  FileOutputStream fil = new FileOutputStream(file);
+                       ObjectOutputStream obj = new ObjectOutputStream(fil)){
+                    obj.writeObject(risiken);
+
+                }
+
+
+    }
+
+    public void ListVonDateiLesen(File file) throws IOException, ClassNotFoundException {
+        List<Risiko> geladeneRisiken;
+        try (FileInputStream fil = new FileInputStream(file);
+             ObjectInputStream les = new ObjectInputStream(fil)){
+
+            geladeneRisiken = (List<Risiko>) les.readObject();
+            this.risiken = geladeneRisiken;
+        }
+
+
+    }
+
+    public void druckeRisikenInDatei(File file) throws IOException, LeereListeException {
+        if(risiken.isEmpty()){throw new LeereListeException("Liste ist leer");}
+
+       try (FileOutputStream st = new FileOutputStream(file)){
+           for(Risiko r : risiken){
+               r.druckDaten(st);
+       }
+
+        }
+    }
+
+
 
     public float berechneSummeRueckstellungen() {
         float summe = 0;
