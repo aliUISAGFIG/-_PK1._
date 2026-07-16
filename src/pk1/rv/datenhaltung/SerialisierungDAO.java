@@ -22,10 +22,13 @@ public class SerialisierungDAO implements IDao{
         } catch (FileNotFoundException ee){
 
             throw new PersistenzException("Die Datei könnte nicht erstellt werden");
-        } catch (AccessDeniedException ex){
+        }
 
+        catch (AccessDeniedException ex){
             throw new PersistenzException("zugriff auf der Datei wurde verweigert");
-        } catch (IOException e) {
+        }
+
+        catch (IOException e) {
             throw new PersistenzException("Die Daten konnte nicht gespeichert werden ");
         }
     }

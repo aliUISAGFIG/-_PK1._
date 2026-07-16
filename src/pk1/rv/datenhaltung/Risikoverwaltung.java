@@ -32,20 +32,18 @@ public class Risikoverwaltung {
     }
 
 
-    public String zeigeRisiken() throws LeereListeException {
-        String alleRisken = "";
-        if (list.isEmpty()) {
-            throw new LeereListeException("Liste ist leer");
-        } else {
-            Collections.sort(list);
-            Iterator<Risiko> risikoIterator = list.iterator();
-            while (risikoIterator.hasNext()) {
-                Risiko r = risikoIterator.next();
-                System.out.println();
-                alleRisken += r.toString();
-            }
-        }
-        return alleRisken;
+    public void zeigeRisiken(OutputStream stream) throws PersistenzException {
+
+       list.forEach(e -> {
+           try {
+               stream.write(e.toString().getBytes());
+               stream.write(System.lineSeparator().getBytes());
+           }
+           catch (IOException e4) {
+               throw new PersistenzException(e4.getMessage());
+           }
+       });
+
     }
 
     public Risiko sucheRisikoMitMaxRueckstellung() throws LeereListeException {
